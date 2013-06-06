@@ -1,0 +1,77 @@
+﻿<Window x:Class="YoutubeDownloader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Youtube Downloader" Height="617" Width="726" Icon="Youtube-Vintage.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    
+    <Grid Background="#FF444444">
+        <Label Content="Youtube video URL" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.079,-2.308" Foreground="#FFFBFBFB"/>
+        <TextBox x:Name="tbxYoutubeLink" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" Background="#FFD8D8D8"/>
+        <Button x:Name="btnLoad" Content="Load" HorizontalAlignment="Left" Margin="432,36,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btnLoad_Click"/>
+        
+        <ScrollViewer HorizontalAlignment="Left" Height="512" Margin="10,64,0,0" VerticalAlignment="Top" Width="497">
+            <ListBox x:Name="listBoxVideos" SelectionChanged="listBoxVideos_SelectionChanged" Background="#444444">
+                <ListBox.ItemTemplate>
+                    <ItemContainerTemplate>
+
+                        <StackPanel Width="460" Margin="0,5" Background="#FF4D4D4D">
+                            <Label Content="{Binding Title}" Padding="0,0,0,0" Foreground="#FFFBFBFB"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Resolution: " Padding="0,0,0,0" Foreground="#FFFBFBFB"/>
+                                <Label Content="{Binding Resolution}" Padding="0,0,0,0" Foreground="#FFFBFBFB"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Audio Bitrate: " Padding="0,0,0,0" Foreground="#FFFBFBFB"/>
+                                <Label Content="{Binding AudioBitrate}" Padding="0,0,0,0" Foreground="#FFFBFBFB"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Video Extension: " Padding="0,0,0,0" Foreground="#FFFBFBFB"/>
+                                <Label Content="{Binding VideoExtension}" Padding="0,0,0,0" Foreground="#FFFBFBFB"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Audio Extraction Enabled: " Padding="0,0,0,0" Foreground="#FFFBFBFB"/>
+                                <Label Content="{Binding CanExtractAudio}" Padding="0,0,0,0" Foreground="#FFFBFBFB"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </ItemContainerTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
+        
+        <Grid HorizontalAlignment="Left" Height="512" Margin="512,64,0,0" VerticalAlignment="Top" Width="196" Background="#525252">            
+            <StackPanel>                
+                <Label Content="Selected Data:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFFBFBFB"/>
+                <Label Content="Title" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFFBFBFB"/>
+                <TextBlock x:Name="tbxTitle" Text="" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFFBFBFB" TextWrapping="Wrap" Width="163" Margin="20,0,0,0"/>
+
+                <Label Content="Resolution" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFFBFBFB"/>
+                <Label x:Name="lblRes" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFFBFBFB" Margin="20,0,0,0"/>
+
+                <Label Content="Audio Bitrate" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFFBFBFB"/>
+                <Label x:Name="lblAudioBit" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFFBFBFB" Margin="20,0,0,0"/>
+
+                <Label Content="Audio Extension" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFFBFBFB"/>
+                <Label x:Name="lblAudioExtension" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFFBFBFB" Margin="20,0,0,0"/>
+
+                <Label Content="Video Extension" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFFBFBFB"/>
+                <Label x:Name="lblVideoExtension" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFFBFBFB" Margin="20,0,0,0"/>
+                
+                <Separator Margin="0,10" />
+                
+                <CheckBox x:Name="cbxExtractAudio" Content="Extract Audio" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFFBFBFB"/>
+                <CheckBox x:Name="cbxDownloadVideo" Content="Download Video" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFFBFBFB" IsChecked="True"/>
+                <Button x:Name="btnDownload" Content="Download" HorizontalAlignment="Left" VerticalAlignment="Top" Width="195" Margin="0,10,0,0" Click="btnDownload_Click"/>
+
+                <Label Content="Downloading Video..." HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFFBFBFB"/>
+                <ProgressBar x:Name="progressbarVideo" HorizontalAlignment="Left" Height="10" VerticalAlignment="Top" Width="195"/>
+
+                <Label Content="Downloading Audio..." HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFFBFBFB"/>
+                <ProgressBar x:Name="progressbarAudio" HorizontalAlignment="Left" Height="10" VerticalAlignment="Top" Width="195 "/>
+
+                <Label Content="Extracting Audio..." HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFFBFBFB"/>
+                <ProgressBar x:Name="progressbarExAudio" HorizontalAlignment="Left" Height="10" VerticalAlignment="Top" Width="195 "/>
+            </StackPanel>
+        </Grid>
+        
+    </Grid>
+</Window>
